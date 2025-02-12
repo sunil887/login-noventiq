@@ -4,6 +4,8 @@ import LoginScreen from './login-screen';
 import { LocaleContext } from './context/locale-context';
 import { getUserLocale } from './utils/locale-utils';
 import { useEffect } from 'react';
+
+
 function App() {
    
   // useEffect(() => {
