@@ -1,5 +1,5 @@
 {
-  "Email": "Email",
-  "Language": "Language",
-  "Password": "Password"
+  "login.form.email": "Email",
+  "login.form.language": "Language",
+  "login.form.password": "Password"
 }

@@ -1,9 +1,7 @@
-import { act, useEffect, useState } from "react";
-import { useLocaleContext } from "./use-locale-context"
+import { useEffect, useState } from "react";
 
 
 export const useTranslation = (locale) => {
-  // const { locale } = useLocaleContext();
   const [ activeLocaleData, setActiveLocaleData ] = useState({});
 
   useEffect(() => {

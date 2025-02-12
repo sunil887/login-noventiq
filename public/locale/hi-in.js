@@ -1,5 +1,5 @@
 {
-  "Email": "Email",
-  "Language": "भाषा",
-  "Password": "Password"
+  "login.form.email": "ईमेल",
+  "login.form.language": "भाषा",
+  "login.form.password": "पासवर्ड"
 }
