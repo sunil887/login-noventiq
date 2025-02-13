@@ -46,7 +46,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <div className='col-lg-4 col-md-10 col-sm-10'>
+    <div className='col-xl-4 col-md-10 col-sm-10'>
     <div className='form-container'> 
       <form onSubmit={onFormSubmit}>
         <div className='form-group row p-3'>
@@ -66,7 +66,9 @@ const LoginScreen = () => {
         <div className='form-group row p-3'>  
           <LabelForm htmlFor="language">  {translate("login.form.language")} :</LabelForm>
           <FormElementContainer>
-            <select id="language" className='border border-dark-subtle no-border-input br-5' name="language" onChange={handleLanguageChange}>
+            <select id="language" 
+              className='border border-dark-subtle no-border-input br-5'
+              name="language" onChange={handleLanguageChange}>
               {SUPPORTED_LOCALES.map((locale) => {
                 return (
                   <option key={locale.value} value={locale.value}> {translate(locale.label)}</option>

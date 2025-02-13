@@ -10,7 +10,7 @@ const AppHeader = () => {
       <img
         src={translate("image.header.company.logo")}
         alt="noventiq Logo"
-        className="logo" />
+        className="img-fluid" />
     </header>
   )
 }

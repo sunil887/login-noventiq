@@ -13,7 +13,7 @@ const isPublicDomainEmail = (email) => {
 }
 
 const isCorporateDomainEmail = (email) => {
-  const corporateDomainEmailSuffixes = ['noventiq.com', 's&pglobal.com', 'def.com']; // this can be a list of all supported domains
+  const corporateDomainEmailSuffixes = ['noventiq.com', 'spglobal.com', 'def.com']; // this can be a list of all supported domains
   
   if (!email) return false
 
@@ -25,7 +25,7 @@ const isCorporateDomainEmail = (email) => {
   }
 }
 
-export const isValidEmail = (email) => {
+export const checkIsValidEmail = (email) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!emailRegex.test(email) || isPublicDomainEmail(email) || !isCorporateDomainEmail(email)) {

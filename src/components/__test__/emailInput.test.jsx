@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { EmailInput } from '../emailInput';  // Adjust the import path if necessary
+import EmailInput from '../common/emailInput';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('EmailInput', () => {
@@ -16,7 +16,7 @@ describe('EmailInput', () => {
   it('should display error message for invalid email', async () => {
   
     const mockHandleEmailChange = vi.fn();
-    render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
+    render(<EmailInput handleEmailChange={mockHandleEmailChange}  errorMessage="Invalid email"/>);
 
     const emailInput = screen.getByTestId('email-input');
     fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
@@ -31,9 +31,9 @@ describe('EmailInput', () => {
     render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
 
     const emailInput = screen.getByTestId('email-input');
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(emailInput, { target: { value: 'test@spglobal.com' } });
 
-    expect(mockHandleEmailChange).toHaveBeenCalledWith('test@example.com');
+    expect(mockHandleEmailChange).toHaveBeenCalledWith('test@spglobal.com');
   });
 
   it('should not call handleEmailChange with public domain email', async () => {
