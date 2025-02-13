@@ -1,9 +1,9 @@
-import { useLocaleContext, useTranslation } from './hooks';
-import { SUPPORTED_LOCALES } from './constants/locales'; 
-import { EmailInput, PasswordInput, Switch} from './components';
+import { useLocaleContext, useTranslation } from '../hooks';
+import { SUPPORTED_LOCALES } from '../constants/locales'; 
+import { EmailInput, PasswordInput, Switch} from '.';
 import { useState } from 'react';
-import LabelForm from './components/FormLabel';
-import FormElementContainer from './components/formElementContainer';
+import LabelForm from './common/form/FormLabel';
+import FormElementContainer from './common/form/FormElementContainer';
 
 const LoginScreen = () => {
   

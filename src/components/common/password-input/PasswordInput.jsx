@@ -1,8 +1,9 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
-import FormElementContainer from "./formElementContainer";
+import PropTypes from "prop-types";
 
-export const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
+import FormElementContainer from "../form/FormElementContainer";
+
+const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,3 +45,5 @@ PasswordInput.propTypes = {
   handlePasswordChange: PropTypes.func.isRequired,
   forgotPasswordLabel: PropTypes.string
 };
+
+export default PasswordInput;

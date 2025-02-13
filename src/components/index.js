@@ -1,4 +1,4 @@
-export * from './emailInput';
-export * from './password-input';
-export * from './app-header/app-header';
-export * from './switch/switch';
+import LoginScreen from './login-screen';
+
+export * from './common';
+export { LoginScreen };

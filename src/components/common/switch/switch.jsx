@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const Switch = ({ label, onChange }) => {
+const Switch = ({ label, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
@@ -31,3 +31,5 @@ Switch.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string
 };
+
+export default Switch;

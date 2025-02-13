@@ -1,7 +1,7 @@
-import './app-header.css';
-import { useLocaleContext, useTranslation } from '../../hooks';
+import './AppHeader.css';
+import { useLocaleContext, useTranslation } from '../../../hooks';
 
-export const AppHeader = () => {
+const AppHeader = () => {
   const { locale } = useLocaleContext();
   const { translate } = useTranslation(locale);
 
@@ -14,3 +14,5 @@ export const AppHeader = () => {
     </header>
   )
 }
+
+export default AppHeader;

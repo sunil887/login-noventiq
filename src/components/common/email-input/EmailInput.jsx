@@ -1,10 +1,11 @@
 import { useState } from "react"
 import PropTypes from 'prop-types';
 
-import { isValidEmail } from "../utils";
-import FormElementContainer from "./formElementContainer";
+import { isValidEmail } from "../../../utils";
+import FormElementContainer from "../form/FormElementContainer";
 
-export const EmailInput = ({ handleEmailChange, errorMessage }) => {
+
+const EmailInput = ({ handleEmailChange, errorMessage }) => {
 
   const [email, setEmail] = useState('');
   const [localErrorMessage, setLocalErrorMessage] = useState('');
@@ -47,3 +48,5 @@ EmailInput.propTypes = {
   handleEmailChange: PropTypes.func.isRequired,
   errorMessage: PropTypes.string
 };
+
+export default EmailInput;
