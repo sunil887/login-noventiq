@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import FormElementContainer from "./formElementContainer";
 
-export const PasswordInput = ({ handlePasswordChange }) => {
+export const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,7 +17,8 @@ export const PasswordInput = ({ handlePasswordChange }) => {
 
   return (
     <>
-      <FormElementContainer>
+      <FormElementContainer >
+      <div className="d-flex border border-dark-subtle align-items-center input-container br-5">
         <i className="bi bi-lock"></i>
         <input
           className="border-0 no-border-input"
@@ -27,12 +28,19 @@ export const PasswordInput = ({ handlePasswordChange }) => {
           onChange={onPasswordChange}
           type={showPassword ? 'text': 'password'} />
         <i className="bi bi-eye-slash" id="togglePassword" onClick={togglePasswordVisibility}></i>
+        </div>
+        <div><a href="#">{forgotPasswordLabel || 'Forgot Password'}</a></div>
       </FormElementContainer>
-      <a href="#"> Forgot Password </a>
+      
     </>
   ) 
 }
 
+PasswordInput.defaultProps = {
+  forgotPasswordLabel: 'Forgot Password'
+}
+
 PasswordInput.propTypes = {
-  handlePasswordChange: PropTypes.func.isRequired
+  handlePasswordChange: PropTypes.func.isRequired,
+  forgotPasswordLabel: PropTypes.string
 };

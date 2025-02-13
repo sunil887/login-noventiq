@@ -1,9 +1,7 @@
-const FormElementContainer = ({ children }) => {
+const FormElementContainer = ({ children, className }) => {
   return <div className="col-sm-8">
-    <span className="d-flex border align-items-center input-container">
     {children}
-    </span>
-  </div>
+  </div>  
 }
 
 export default FormElementContainer;

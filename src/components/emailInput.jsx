@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import { isValidEmail } from "../utils";
 import FormElementContainer from "./formElementContainer";
 
-export const EmailInput = ({ handleEmailChange }) => {
+export const EmailInput = ({ handleEmailChange, errorMessage }) => {
 
   const [email, setEmail] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [localErrorMessage, setLocalErrorMessage] = useState('');
 
   const onEmailChange = (event) => {
     const emailVal = event.target.value;
     setEmail(emailVal);
 
-    const errorMsg = isValidEmail(emailVal) || emailVal === '' ? '' : 'Invalid email';
-    setErrorMessage(errorMsg);
+    const errorMsg = isValidEmail(emailVal) || emailVal === '' ? '' : errorMessage;
+    setLocalErrorMessage(errorMsg);
 
     if (isValidEmail) {
       handleEmailChange(emailVal)
@@ -25,7 +25,7 @@ export const EmailInput = ({ handleEmailChange }) => {
     <>
       <FormElementContainer>
         <input
-          className="border-0 no-border-input"
+          className="border border-dark-subtle no-border-input br-5"
           data-testid="email-input"
           type="email"
           name="email"
@@ -33,11 +33,17 @@ export const EmailInput = ({ handleEmailChange }) => {
           value={email}
           onChange={onEmailChange}
           />
+          {<div className="error-msg"> {localErrorMessage} </div>}
       </FormElementContainer>
-      {errorMessage && <div className="error-msg"> {errorMessage} </div>}
+      
     </>)
 }
 
+EmailInput.defaultProps = {
+  errorMessage: "Invalid Email"
+}
+
 EmailInput.propTypes = {
-  handleEmailChange: PropTypes.func.isRequired
+  handleEmailChange: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string
 };

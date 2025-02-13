@@ -44,12 +44,12 @@
 // }
 
 .full-screen {
-  width: 100vw;
-  height: 100vh;
-}
-
-.app-container {
-  margin: 10px;
+  position: fixed;  /* Ensures it stays in place */
+  top: 0;
+  left: 0;
+  width: 100vw;  /* 100% of viewport width */
+  height: 100vh; /* 100% of viewport height */
+  //overflow: hidden; /* Prevents scrolling */
   background-color: #e8ecf1;
 }
 
@@ -63,6 +63,7 @@
 .form-container {
   border: 1px solid black;
   padding: 40px;
+  background-color: white;
 }
 
 .no-border-input {
@@ -80,4 +81,9 @@
 
 .error-msg {
   color: red;
+  height: 10px;
+}
+
+.br-5 {
+  border-radius: 5px;
 }

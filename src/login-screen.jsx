@@ -31,45 +31,63 @@ const LoginScreen = () => {
   const onFormSubmit = () => {
      const payload = {
       email,
-      password,
-      language: locale
+      password
      }
      
-     alert(`User with ${email} has logged in succesfully`);
+     if (isLoginAllowed()) {
+      alert(`User with ${email} has logged in succesfully`);
+     }
+     
      console.log(payload, 'payload');
   }
 
+  const isLoginAllowed = () => {
+    return !!(email && password)
+  }
+
   return (
-    <div>
-    <div className='col-sm-12 form-container'> 
+    <div className='col-lg-4 col-md-10 col-sm-10'>
+    <div className='form-container'> 
       <form onSubmit={onFormSubmit}>
         <div className='form-group row p-3'>
           <LabelForm htmlFor="language"> {translate("login.form.email")} : </LabelForm>
-          <EmailInput handleEmailChange={handleEmailChange} />
+            <EmailInput
+              handleEmailChange={handleEmailChange}
+              errorMessage={translate('login.form.error.invalid.email')} />
         </div>
         
         <div className='form-group row p-3'>
           <LabelForm htmlFor="language"> {translate("login.form.password")} :</LabelForm>
-          <PasswordInput handlePasswordChange={handlePasswordChange} />
+          <PasswordInput
+            handlePasswordChange={handlePasswordChange}
+            forgotPasswordLabel={translate('login.form.password.forgot')} />
         </div>
 
         <div className='form-group row p-3'>  
           <LabelForm htmlFor="language">  {translate("login.form.language")} :</LabelForm>
           <FormElementContainer>
-            <select id="language" className='border-0 no-border-input' name="language" onChange={handleLanguageChange}>
+            <select id="language" className='border border-dark-subtle no-border-input br-5' name="language" onChange={handleLanguageChange}>
               {SUPPORTED_LOCALES.map((locale) => {
                 return (
                   <option key={locale.value} value={locale.value}> {translate(locale.label)}</option>
                 )
               })}
             </select>
+            <div className='d-flex'>
+              <Switch label={translate("login.form.switch")}/>
+            </div>
           </FormElementContainer>
         </div>
-        <Switch label={translate("login.form.switch")}/>
     </form>
     </div>
     <div className='d-flex justify-content-center m-md-4'>
-      <button type="button" onClick={onFormSubmit} className="btn btn-dark w-75"> Log In </button>
+      <button
+        type="button"
+        disabled={!isLoginAllowed()}
+        onClick={onFormSubmit} 
+        className="btn btn-dark w-75">
+          {translate("login.form.button.login")}
+        </button>
     </div>
         
     </div>

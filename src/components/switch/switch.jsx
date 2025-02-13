@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Switch = ({ label, onChange }) => {
@@ -24,4 +25,9 @@ export const Switch = ({ label, onChange }) => {
       {label && <label className="form-check-label" htmlFor="switch">{label}</label>}
     </div>
   );
+};
+
+Switch.propTypes = {
+  onChange: PropTypes.func,
+  label: PropTypes.string
 };
