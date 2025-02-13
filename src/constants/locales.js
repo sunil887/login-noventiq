@@ -1,4 +1,4 @@
 export const SUPPORTED_LOCALES = [
-  { label: "English", value: "en-US" },
-  { label: "Hindi", value: "hi-IN" }
+  { label: "login.form.language.english", value: "en-US" },
+  { label: "login.form.language.hindi", value: "hi-IN" }
 ]

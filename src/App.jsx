@@ -3,6 +3,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.scss'
 
 import LoginScreen from './login-screen';
+import { AppHeader } from './components';
 import { LocaleContext } from './context/locale-context';
 import { getUserLocale } from './utils/locale-utils';
 
@@ -20,8 +21,9 @@ function App() {
   // }, [])
   
   return (
-    <div className='container container-center full-screen'>
+    <div className='app-container container-center full-screen'>
     <LocaleContext.Provider value={getUserLocale()}>
+      <AppHeader />
       <LoginScreen />
     </LocaleContext.Provider>  
     </div>

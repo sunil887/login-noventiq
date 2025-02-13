@@ -1,8 +1,7 @@
 import { useLocaleContext, useTranslation } from './hooks';
 import { SUPPORTED_LOCALES } from './constants/locales'; 
-import { EmailInput } from './components';
+import { EmailInput, PasswordInput, Switch} from './components';
 import { useState } from 'react';
-import { PasswordInput } from './components/password-input';
 import LabelForm from './components/FormLabel';
 import FormElementContainer from './components/formElementContainer';
 
@@ -35,7 +34,8 @@ const LoginScreen = () => {
       password,
       language: locale
      }
-
+     
+     alert(`User with ${email} has logged in succesfully`);
      console.log(payload, 'payload');
   }
 
@@ -43,34 +43,34 @@ const LoginScreen = () => {
     <div>
     <div className='col-sm-12 form-container'> 
       <form onSubmit={onFormSubmit}>
-     
-        <div className='form-group row p-1'>
+        <div className='form-group row p-3'>
           <LabelForm htmlFor="language"> {translate("login.form.email")} : </LabelForm>
           <EmailInput handleEmailChange={handleEmailChange} />
         </div>
         
-        <div className='form-group row p-1'>
+        <div className='form-group row p-3'>
           <LabelForm htmlFor="language"> {translate("login.form.password")} :</LabelForm>
           <PasswordInput handlePasswordChange={handlePasswordChange} />
         </div>
 
-        <div className='form-group row p-1'>  
+        <div className='form-group row p-3'>  
           <LabelForm htmlFor="language">  {translate("login.form.language")} :</LabelForm>
           <FormElementContainer>
             <select id="language" className='border-0 no-border-input' name="language" onChange={handleLanguageChange}>
               {SUPPORTED_LOCALES.map((locale) => {
                 return (
-                  <option key={locale.value} value={locale.value}> {locale.label}</option>
+                  <option key={locale.value} value={locale.value}> {translate(locale.label)}</option>
                 )
               })}
             </select>
           </FormElementContainer>
         </div>
+        <Switch label={translate("login.form.switch")}/>
     </form>
     </div>
     <div className='d-flex justify-content-center m-md-4'>
-          <button type="submit" className="btn btn-dark w-75"> Log In </button>
-        </div>
+      <button type="button" onClick={onFormSubmit} className="btn btn-dark w-75"> Log In </button>
+    </div>
         
     </div>
   )
