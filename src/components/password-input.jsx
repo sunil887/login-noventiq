@@ -11,9 +11,14 @@ export const PasswordInput = ({ handlePasswordChange }) => {
     handlePasswordChange(event.target.value);
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
   return (
-    <FormElementContainer>
-      <i className="bi bi-lock"></i>
+    <>
+      <FormElementContainer>
+        <i className="bi bi-lock"></i>
         <input
           className="border-0 no-border-input"
           id="password"
@@ -21,8 +26,10 @@ export const PasswordInput = ({ handlePasswordChange }) => {
           value={password}
           onChange={onPasswordChange}
           type={showPassword ? 'text': 'password'} />
-        <i className="bi bi-eye-slash" id="togglePassword"></i>
-    </FormElementContainer>  
+        <i className="bi bi-eye-slash" id="togglePassword" onClick={togglePasswordVisibility}></i>
+      </FormElementContainer>
+      <a href="#"> Forgot Password </a>
+    </>
   ) 
 }
 

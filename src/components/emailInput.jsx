@@ -13,7 +13,7 @@ export const EmailInput = ({ handleEmailChange }) => {
     const emailVal = event.target.value;
     setEmail(emailVal);
 
-    const errorMsg = isValidEmail(emailVal) ? '' : 'Invalid email';
+    const errorMsg = isValidEmail(emailVal) || emailVal === '' ? '' : 'Invalid email';
     setErrorMessage(errorMsg);
 
     if (isValidEmail) {
@@ -22,18 +22,20 @@ export const EmailInput = ({ handleEmailChange }) => {
   }
 
   return (
-    <FormElementContainer>
-      <input
-        className="border-0 no-border-input"
-        data-testid="email-input"
-        type="email"
-        name="email"
-        id="email"
-        value={email}
-        onChange={onEmailChange}
-        />
-        {errorMessage && <div> {errorMessage} </div>}
-      </FormElementContainer>)
+    <>
+      <FormElementContainer>
+        <input
+          className="border-0 no-border-input"
+          data-testid="email-input"
+          type="email"
+          name="email"
+          id="email"
+          value={email}
+          onChange={onEmailChange}
+          />
+      </FormElementContainer>
+      {errorMessage && <div className="error-msg"> {errorMessage} </div>}
+    </>)
 }
 
 EmailInput.propTypes = {

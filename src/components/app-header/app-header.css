@@ -1,0 +1,9 @@
+.header {
+  padding: 10px 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.logo {
+  height: 100px;
+}
