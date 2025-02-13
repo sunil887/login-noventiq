@@ -1,5 +1,5 @@
 {
-  "image.header.company.logo": "./noventiq-logo-hindi.svg",
+  "image.header.company.logo": "./noventiq-logo.svg",
   
   "login.form.email": "ईमेल",
   "login.form.language": "भाषा",
