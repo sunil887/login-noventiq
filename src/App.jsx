@@ -1,10 +1,10 @@
-import './App.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+import './App.scss'
 
 import LoginScreen from './login-screen';
 import { LocaleContext } from './context/locale-context';
 import { getUserLocale } from './utils/locale-utils';
-import { useEffect } from 'react';
-
 
 function App() {
    
@@ -20,11 +20,11 @@ function App() {
   // }, [])
   
   return (
-    <>
+    <div className='container container-center full-screen'>
     <LocaleContext.Provider value={getUserLocale()}>
       <LoginScreen />
     </LocaleContext.Provider>  
-    </>
+    </div>
   )
 }
 

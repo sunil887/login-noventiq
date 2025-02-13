@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import FormElementContainer from "./formElementContainer";
 
 export const PasswordInput = ({ handlePasswordChange }) => {
   const [password, setPassword] = useState();
@@ -11,15 +12,17 @@ export const PasswordInput = ({ handlePasswordChange }) => {
   }
 
   return (
-    <>
-      <input
-        id="password"
-        name="password"
-        value={password}
-        onChange={onPasswordChange}
-        type={showPassword ? 'text': 'password'} />
-      <button type="button" onClick={() => setShowPassword(!showPassword)}> eye </button>  
-    </>  
+    <FormElementContainer>
+      <i className="bi bi-lock"></i>
+        <input
+          className="border-0 no-border-input"
+          id="password"
+          name="password"
+          value={password}
+          onChange={onPasswordChange}
+          type={showPassword ? 'text': 'password'} />
+        <i className="bi bi-eye-slash" id="togglePassword"></i>
+    </FormElementContainer>  
   ) 
 }
 

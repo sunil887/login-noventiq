@@ -2,6 +2,7 @@ import { useState } from "react"
 import PropTypes from 'prop-types';
 
 import { isValidEmail } from "../utils";
+import FormElementContainer from "./formElementContainer";
 
 export const EmailInput = ({ handleEmailChange }) => {
 
@@ -21,8 +22,9 @@ export const EmailInput = ({ handleEmailChange }) => {
   }
 
   return (
-    <>
+    <FormElementContainer>
       <input
+        className="border-0 no-border-input"
         data-testid="email-input"
         type="email"
         name="email"
@@ -31,7 +33,7 @@ export const EmailInput = ({ handleEmailChange }) => {
         onChange={onEmailChange}
         />
         {errorMessage && <div> {errorMessage} </div>}
-    </>)
+      </FormElementContainer>)
 }
 
 EmailInput.propTypes = {

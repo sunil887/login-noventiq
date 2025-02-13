@@ -3,6 +3,8 @@ import { SUPPORTED_LOCALES } from './constants/locales';
 import { EmailInput } from './components';
 import { useState } from 'react';
 import { PasswordInput } from './components/password-input';
+import LabelForm from './components/FormLabel';
+import FormElementContainer from './components/formElementContainer';
 
 const LoginScreen = () => {
   
@@ -38,32 +40,39 @@ const LoginScreen = () => {
   }
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <div className='form-container'>
-        <div>
-          <label htmlFor="email"> {translate("login.form.email")} : </label>
+    <div>
+    <div className='col-sm-12 form-container'> 
+      <form onSubmit={onFormSubmit}>
+     
+        <div className='form-group row p-1'>
+          <LabelForm htmlFor="language"> {translate("login.form.email")} : </LabelForm>
           <EmailInput handleEmailChange={handleEmailChange} />
         </div>
         
-        <div>
-          <label htmlFor="password"> {translate("login.form.password")} : </label>
+        <div className='form-group row p-1'>
+          <LabelForm htmlFor="language"> {translate("login.form.password")} :</LabelForm>
           <PasswordInput handlePasswordChange={handlePasswordChange} />
         </div>
 
-        <div>  
-          <label htmlFor="language"> {translate("login.form.language")} : </label>
-          <select id="language" name="language" onChange={handleLanguageChange}>
-            {SUPPORTED_LOCALES.map((locale) => {
-              return (
-                <option key={locale.value} value={locale.value}> {locale.label}</option>
-              )
-            })}
-          </select>
+        <div className='form-group row p-1'>  
+          <LabelForm htmlFor="language">  {translate("login.form.language")} :</LabelForm>
+          <FormElementContainer>
+            <select id="language" className='border-0 no-border-input' name="language" onChange={handleLanguageChange}>
+              {SUPPORTED_LOCALES.map((locale) => {
+                return (
+                  <option key={locale.value} value={locale.value}> {locale.label}</option>
+                )
+              })}
+            </select>
+          </FormElementContainer>
         </div>
-
-        <button> Log In </button>
-      </div>
     </form>
+    </div>
+    <div className='d-flex justify-content-center m-md-4'>
+          <button type="submit" className="btn btn-dark w-75"> Log In </button>
+        </div>
+        
+    </div>
   )
 }
 
