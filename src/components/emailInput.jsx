@@ -9,7 +9,6 @@ export const EmailInput = ({ handleEmailChange }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const onEmailChange = (event) => {
-
     const emailVal = event.target.value;
     setEmail(emailVal);
 
@@ -24,6 +23,7 @@ export const EmailInput = ({ handleEmailChange }) => {
   return (
     <>
       <input
+        data-testid="email-input"
         type="email"
         name="email"
         id="email"
