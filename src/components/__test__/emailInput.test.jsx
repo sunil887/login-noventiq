@@ -1,38 +1,49 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import EmailInput from '../common/EmailInput';
 import { describe, it, expect, vi } from 'vitest';
 
-describe('EmailInput', () => {
-  it('should render email input field', () => {
+import EmailInput from '../common/EmailInput';
 
-    const mockHandleEmailChange = vi.fn();
+describe("EmailInput Component", () => {
+    it("renders without crashing", () => {
+        render(<EmailInput handleEmailChange={() => {}} />);
+        expect(screen.getByTestId("email-input-testId")).toBeInTheDocument();
+    });
 
-    render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
+    it("calls handleEmailChange on input change", () => {
+        const mockHandleEmailChange = vi.fn();
+        render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
+        
+        const emailInput = screen.getByTestId("email-input-testId");
+        fireEvent.change(emailInput, { target: { value: "test@example.com" } });
 
-    const emailInput = screen.getByTestId('email-input');
-    expect(emailInput).toBeInTheDocument();
-  });
+        expect(mockHandleEmailChange).toHaveBeenCalledWith("test@example.com");
+    });
 
-  it('should display error message for invalid email', async () => {
-  
-    const mockHandleEmailChange = vi.fn();
-    render(<EmailInput handleEmailChange={mockHandleEmailChange}  errorMessage="Invalid email"/>);
+    it("shows error message for invalid email", () => {
+        render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
+        
+        const emailInput = screen.getByTestId("email-input-testId");
+        fireEvent.change(emailInput, { target: { value: "invalid-email" } });
 
-    const emailInput = screen.getByTestId('email-input');
-    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
+        expect(screen.getByText("Invalid email address")).toBeInTheDocument();
+    });
 
-    const errorMessage = screen.getByText('Invalid email');
-    expect(errorMessage).toBeInTheDocument();
-  });
+    it("does not show error message for valid email", () => {
+        render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
+        
+        const emailInput = screen.getByTestId("email-input-testId");
+        fireEvent.change(emailInput, { target: { value: "sunil.tripathi@spglobal.com" } });
 
-  it('should call handleEmailChange with email', async () => {
+        expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
+    });
 
-    const mockHandleEmailChange = vi.fn();
-    render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
+    it("hides error message when input is empty", () => {
+        render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
+        
+        const emailInput = screen.getByTestId("email-input-testId");
+        fireEvent.change(emailInput, { target: { value: "" } });
 
-    const emailInput = screen.getByTestId('email-input');
-    fireEvent.change(emailInput, { target: { value: 'test@spglobal.com' } });
-
-    expect(mockHandleEmailChange).toHaveBeenCalledWith('test@spglobal.com');
-  });
+        expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
+    });
 });
+

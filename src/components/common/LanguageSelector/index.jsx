@@ -8,6 +8,7 @@ const LanguageSelector = ({ handleLanguageChange, currentLocale }) => {
 
   return (
     <select id="language" 
+      data-testid='language-selector-test-id'
       className='border border-dark-subtle no-border-input br-5'
       name="language"
       onChange={handleLanguageChange}>

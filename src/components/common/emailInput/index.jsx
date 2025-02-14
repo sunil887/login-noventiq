@@ -24,7 +24,7 @@ const EmailInput = ({ handleEmailChange, errorMessage }) => {
         <span><i className="bi bi-envelope pd-r-4"></i></span>
         <input
           className="no-border-input br-5"
-          data-testid="email-input"
+          data-testid="email-input-testId"
           type="email"
           name="email"
           id="email"

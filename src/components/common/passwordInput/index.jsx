@@ -1,54 +1,56 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+  import { useState } from "react";
+  import PropTypes from "prop-types";
 
-import FormElementContainer from "../form/FormElementContainer";
+  import FormElementContainer from "../form/FormElementContainer";
 
-const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
-  const [password, setPassword] = useState();
-  const [showPassword, setShowPassword] = useState(false);
+  const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
+    const [password, setPassword] = useState();
+    const [showPassword, setShowPassword] = useState(false);
 
-  const onPasswordChange = (event) => {
-    setPassword(event.target.value);
-    handlePasswordChange(event.target.value);
+    const onPasswordChange = (event) => {
+      setPassword(event.target.value);
+      handlePasswordChange(event.target.value);
+    }
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword)
+    }
+
+    const eyeIconClasses = `bi bi-eye-slash hover-effect cursor-pointer ${showPassword ? 'icon-active-color' : ''}`;
+    
+    return (
+      <>
+        <FormElementContainer >
+        <div className="d-flex border border-dark-subtle align-items-center input-container br-5">
+          <i className="bi bi-lock"></i>
+          <input
+            data-testid="pswd-input-testid"
+            className="border-0 no-border-input"
+            id="password"
+            name="password"
+            value={password}
+            onChange={onPasswordChange}
+            type={showPassword ? 'text': 'password'} />
+          <i
+            data-testid="togglePassword-testid"
+            className={eyeIconClasses}
+            id="togglePassword"
+            onClick={togglePasswordVisibility} />
+          </div>
+          <div><a href="#">{forgotPasswordLabel || 'Forgot Password'}</a></div>
+        </FormElementContainer>
+        
+      </>
+    ) 
   }
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
+  PasswordInput.defaultProps = {
+    forgotPasswordLabel: 'Forgot Password'
   }
 
-  const eyeIconClasses = `bi bi-eye-slash hover-effect cursor-pointer ${showPassword ? 'icon-active-color' : ''}`;
-  
-  return (
-    <>
-      <FormElementContainer >
-      <div className="d-flex border border-dark-subtle align-items-center input-container br-5">
-        <i className="bi bi-lock"></i>
-        <input
-          className="border-0 no-border-input"
-          id="password"
-          name="password"
-          value={password}
-          onChange={onPasswordChange}
-          type={showPassword ? 'text': 'password'} />
-        <i
-          className={eyeIconClasses}
-          id="togglePassword"
-          onClick={togglePasswordVisibility} />
-        </div>
-        <div><a href="#">{forgotPasswordLabel || 'Forgot Password'}</a></div>
-      </FormElementContainer>
-      
-    </>
-  ) 
-}
+  PasswordInput.propTypes = {
+    handlePasswordChange: PropTypes.func.isRequired,
+    forgotPasswordLabel: PropTypes.string
+  };
 
-PasswordInput.defaultProps = {
-  forgotPasswordLabel: 'Forgot Password'
-}
-
-PasswordInput.propTypes = {
-  handlePasswordChange: PropTypes.func.isRequired,
-  forgotPasswordLabel: PropTypes.string
-};
-
-export default PasswordInput;
+  export default PasswordInput;
