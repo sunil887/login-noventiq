@@ -1,4 +1,4 @@
-import LoginScreen from './login-screen';
+import LoginScreen from './Pages/LoginScreen';
 
 export * from './common';
 export { LoginScreen };

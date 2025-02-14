@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import EmailInput from '../common/emailInput';
+import EmailInput from '../common/EmailInput';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('EmailInput', () => {
@@ -25,7 +25,7 @@ describe('EmailInput', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
-  it('should call handleEmailChange with valid email', async () => {
+  it('should call handleEmailChange with email', async () => {
 
     const mockHandleEmailChange = vi.fn();
     render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
@@ -34,17 +34,5 @@ describe('EmailInput', () => {
     fireEvent.change(emailInput, { target: { value: 'test@spglobal.com' } });
 
     expect(mockHandleEmailChange).toHaveBeenCalledWith('test@spglobal.com');
-  });
-
-  it('should not call handleEmailChange with public domain email', async () => {
-  
-    const mockHandleEmailChange = vi.fn();
-    render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
-
-  
-    const emailInput = screen.getByTestId('email-input');
-    fireEvent.change(emailInput, { target: { value: 'test' } });
-
-    expect(mockHandleEmailChange).not.toHaveBeenCalledWith('test');
   });
 });

@@ -1,9 +1,9 @@
-import EmailInput from './emailInput';
-import PasswordInput from './passwordInput';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
 import FormElementContainer from './form/FormElementContainer';
 import FormLabel from './form/FormLabel'
-import AppHeader from './app-header/AppHeader';
-import Switch from './switch';
+import AppHeader from './AppHeader';
+import Switch from './Switch';
 
 export {
   AppHeader,

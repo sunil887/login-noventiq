@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useLocaleContext, useTranslation } from '../hooks';
+import { useLocaleContext, useTranslation } from '../../hooks';
 
-import { SUPPORTED_LOCALES } from '../constants/locales'; 
-import { EmailInput, PasswordInput, Switch } from '.';
-import LabelForm from './common/form/FormLabel';
-import FormElementContainer from './common/form/FormElementContainer';
-import { checkIsValidEmail } from '../utils';
+import { SUPPORTED_LOCALES } from '../../constants/locales'; 
+import { EmailInput, PasswordInput, Switch } from '..';
+import LabelForm from '../common/form/FormLabel';
+import FormElementContainer from '../common/form/FormElementContainer';
+import { checkIsValidEmail } from '../../utils';
 
 const LoginScreen = () => {
   

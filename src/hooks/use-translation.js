@@ -21,8 +21,6 @@ export const useTranslation = (locale) => {
   }, [locale])
   
   const translate = (key) => {
-    console.log(activeLocaleData[key], key, 'activeLocaleData[key]')
-    
     return activeLocaleData[key] 
   }
   
