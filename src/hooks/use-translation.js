@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 export const useTranslation = (locale) => {
   const [ activeLocaleData, setActiveLocaleData ] = useState({});
 

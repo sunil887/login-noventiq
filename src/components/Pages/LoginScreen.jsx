@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useLocaleContext, useTranslation } from '../../hooks';
-
-import { SUPPORTED_LOCALES } from '../../constants/locales'; 
-import { EmailInput, PasswordInput, Switch } from '..';
+ 
+import { EmailInput, LanguageSelector, PasswordInput, Switch } from '..';
 import LabelForm from '../common/form/FormLabel';
 import FormElementContainer from '../common/form/FormElementContainer';
 import { checkIsValidEmail } from '../../utils';
@@ -64,17 +63,12 @@ const LoginScreen = () => {
         </div>
 
         <div className='form-group row p-3'>  
-          <LabelForm htmlFor="language">  {translate("login.form.language")} :</LabelForm>
+          <LabelForm htmlFor="language"> {translate("login.form.language")} :</LabelForm>
           <FormElementContainer>
-            <select id="language" 
-              className='border border-dark-subtle no-border-input br-5'
-              name="language" onChange={handleLanguageChange}>
-              {SUPPORTED_LOCALES.map((locale) => {
-                return (
-                  <option key={locale.value} value={locale.value}> {translate(locale.label)}</option>
-                )
-              })}
-            </select>
+            <LanguageSelector
+              handleLanguageChange={handleLanguageChange}
+              currentLocale={locale}
+              />
             <div className='d-flex'>
               <Switch label={translate("login.form.switch")}/>
             </div>
