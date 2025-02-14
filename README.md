@@ -1,8 +1,7 @@
-# React + Vite
+# Noventiq Login Screen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Assumptions: only 'noventiq.com', 'spglobal.com' are the only corporate login email allowed.
+2. To run the application locally. just clone the app from https://github.com/sunil887/login-noventiq.git into your workspace folder
+3. run npm ci to install packages required.
+4. run npm start dev. This will start the application at http://localhost:8080/.
+5. run npm test to execute test cases.

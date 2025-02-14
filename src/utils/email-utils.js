@@ -13,7 +13,7 @@ const isPublicDomainEmail = (email) => {
 }
 
 const isCorporateDomainEmail = (email) => {
-  const corporateDomainEmailSuffixes = ['noventiq.com', 'spglobal.com', 'def.com']; // this can be a list of all supported domains
+  const corporateDomainEmailSuffixes = ['noventiq.com', 'spglobal.com']; // this can be a list of all supported domains
   
   if (!email) return false
 
