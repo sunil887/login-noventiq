@@ -1,4 +1,4 @@
-import './AppHeader.css';
+import './AppHeader.scss';
 import { useLocaleContext, useTranslation } from '../../../hooks';
 
 const AppHeader = () => {
