@@ -15,7 +15,6 @@ export const useTranslation = (locale) => {
       const localeData = await response.json();
 
       setActiveLocaleData(localeData);
-      console.log(localeData, 'XXX');
     }
     
     loadActiveLocale();

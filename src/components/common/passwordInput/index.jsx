@@ -16,6 +16,8 @@ const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
     setShowPassword(!showPassword)
   }
 
+  const eyeIconClasses = `bi bi-eye-slash hover-effect cursor-pointer ${showPassword ? 'icon-active-color' : ''}`;
+  
   return (
     <>
       <FormElementContainer >
@@ -28,7 +30,10 @@ const PasswordInput = ({ handlePasswordChange, forgotPasswordLabel }) => {
           value={password}
           onChange={onPasswordChange}
           type={showPassword ? 'text': 'password'} />
-        <i className="bi bi-eye-slash" id="togglePassword" onClick={togglePasswordVisibility}></i>
+        <i
+          className={eyeIconClasses}
+          id="togglePassword"
+          onClick={togglePasswordVisibility} />
         </div>
         <div><a href="#">{forgotPasswordLabel || 'Forgot Password'}</a></div>
       </FormElementContainer>

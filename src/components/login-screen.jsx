@@ -1,9 +1,11 @@
-import { useLocaleContext, useTranslation } from '../hooks';
-import { SUPPORTED_LOCALES } from '../constants/locales'; 
-import { EmailInput, PasswordInput, Switch} from '.';
 import { useState } from 'react';
+import { useLocaleContext, useTranslation } from '../hooks';
+
+import { SUPPORTED_LOCALES } from '../constants/locales'; 
+import { EmailInput, PasswordInput, Switch } from '.';
 import LabelForm from './common/form/FormLabel';
 import FormElementContainer from './common/form/FormElementContainer';
+import { checkIsValidEmail } from '../utils';
 
 const LoginScreen = () => {
   
@@ -13,32 +15,31 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLanguageChange = (event) => {
-   console.log(event.target.value, locale, navigator.language);
-  
    setLocale(event.target.value);
   }
 
   const handleEmailChange = (emailVal) => {
-    setEmail(emailVal);
+    setEmail(checkIsValidEmail(emailVal) ? emailVal : '');
   }
 
   const handlePasswordChange = (passwordVal) => {
     setPassword(passwordVal);
   }
 
-  const onFormSubmit = () => {
-     const payload = {
-      email,
-      password
-     }
-     
-     if (isLoginAllowed()) {
-      alert(`User with ${email} has logged in succesfully`);
-     }
-     
-     console.log(payload, 'payload');
+  const handleLogin = () => {
+    setIsLoading(true);
+    // this is to simulate  button loader on API call.
+    setTimeout(() => {
+      setIsLoading(false);
+      if (isLoginAllowed()) {
+        alert(`User with ${email} has logged in succesfully`);
+      }
+    }, 2000);
+
+   
   }
 
   const isLoginAllowed = () => {
@@ -48,7 +49,6 @@ const LoginScreen = () => {
   return (
     <div className='col-xl-4 col-md-10 col-sm-10'>
     <div className='form-container'> 
-      <form onSubmit={onFormSubmit}>
         <div className='form-group row p-3'>
           <LabelForm htmlFor="language"> {translate("login.form.email")} : </LabelForm>
             <EmailInput
@@ -80,15 +80,15 @@ const LoginScreen = () => {
             </div>
           </FormElementContainer>
         </div>
-    </form>
     </div>
     <div className='d-flex justify-content-center m-md-4'>
       <button
         type="button"
         disabled={!isLoginAllowed()}
-        onClick={onFormSubmit} 
+        onClick={handleLogin} 
         className="btn btn-dark w-75">
           {translate("login.form.button.login")}
+          {isLoading && <span className="spinner-border spinner-border-sm me-2 ps-1 ms-1"></span>}
         </button>
     </div>
         
