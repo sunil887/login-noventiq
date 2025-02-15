@@ -34,7 +34,7 @@ describe("EmailInput Component", () => {
         const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "sunil.tripathi@spglobal.com" } });
 
-        expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
+        expect(screen.queryByText("Invalid email address")).toHaveClass('visibility-hidden');
     });
 
     it("hides error message when input is empty", () => {
@@ -43,6 +43,6 @@ describe("EmailInput Component", () => {
         const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "" } });
 
-        expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
+        expect(screen.queryByText("Invalid email address")).toHaveClass('visibility-hidden');
     });
 });

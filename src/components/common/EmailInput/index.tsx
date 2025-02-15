@@ -33,7 +33,10 @@ const EmailInput: React.FC<EmailInputProps> = ({ handleEmailChange, errorMessage
           onChange={onEmailChange}
         />
       </div>
-      {<div className={`height-10 ${ showErrorMessage ? 'error-msg-color' : 'visibility-hidden' }`}>{errorMessage}</div>}
+      {<div
+        className={`height-10 ${ showErrorMessage ? 'error-msg-color' : 'visibility-hidden' }`}>
+          {errorMessage}
+        </div>}
     </FormElementContainer>
   );
 };
