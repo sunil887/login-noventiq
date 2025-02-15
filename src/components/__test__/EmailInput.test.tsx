@@ -13,7 +13,7 @@ describe("EmailInput Component", () => {
         const mockHandleEmailChange = vi.fn();
         render(<EmailInput handleEmailChange={mockHandleEmailChange} />);
         
-        const emailInput = screen.getByTestId("email-input-testId");
+        const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "test@example.com" } });
 
         expect(mockHandleEmailChange).toHaveBeenCalledWith("test@example.com");
@@ -22,7 +22,7 @@ describe("EmailInput Component", () => {
     it("shows error message for invalid email", () => {
         render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
         
-        const emailInput = screen.getByTestId("email-input-testId");
+        const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "invalid-email" } });
 
         expect(screen.getByText("Invalid email address")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("EmailInput Component", () => {
     it("does not show error message for valid email", () => {
         render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
         
-        const emailInput = screen.getByTestId("email-input-testId");
+        const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "sunil.tripathi@spglobal.com" } });
 
         expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
@@ -40,10 +40,9 @@ describe("EmailInput Component", () => {
     it("hides error message when input is empty", () => {
         render(<EmailInput handleEmailChange={() => {}} errorMessage="Invalid email address" />);
         
-        const emailInput = screen.getByTestId("email-input-testId");
+        const emailInput = screen.getByTestId("email-input-testId") as HTMLInputElement;
         fireEvent.change(emailInput, { target: { value: "" } });
 
         expect(screen.queryByText("Invalid email address")).not.toBeInTheDocument();
     });
 });
-

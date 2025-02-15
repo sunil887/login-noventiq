@@ -1,7 +1,7 @@
 import './AppHeader.scss';
 import { useLocaleContext, useTranslation } from '../../../hooks';
 
-const AppHeader = () => {
+const AppHeader: React.FC = () => {
   const { locale } = useLocaleContext();
   const { translate } = useTranslation(locale);
 

@@ -1,9 +1,13 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Switch = ({ label, onChange }) => {
-  const [isChecked, setIsChecked] = useState(false);
+interface SwitchProps {
+  label?: string;
+  onChange?: (checked: boolean) => void;
+}
+
+const Switch: React.FC<SwitchProps> = ({ label, onChange }) => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
@@ -25,11 +29,6 @@ const Switch = ({ label, onChange }) => {
       {label && <label className="form-check-label" htmlFor="switch">{label}</label>}
     </div>
   );
-};
-
-Switch.propTypes = {
-  onChange: PropTypes.func,
-  label: PropTypes.string
 };
 
 export default Switch;

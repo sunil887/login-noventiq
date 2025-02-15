@@ -4,7 +4,12 @@ import { describe, it, expect } from 'vitest';
 import { useLocaleContext } from '../index';
 import { LocaleContext } from '../../context/locale-context';
 
-const wrapper = ({ children, value }) => (
+interface WrapperProps {
+  children: React.ReactNode;
+  value: string;
+}
+
+const wrapper = ({ children, value }: WrapperProps) => (
   <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
 );
 
