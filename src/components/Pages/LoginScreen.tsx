@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useMemo } from 'react';
 import { useLocaleContext, useTranslation } from '../../hooks';
 import { EmailInput, LanguageSelector, PasswordInput, Switch } from '..';
 import LabelForm from '../common/form/FormLabel';
@@ -29,15 +29,14 @@ const LoginScreen: React.FC = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      if (isLoginAllowed()) {
+      if (isLoginAllowed) {
         alert(`User with ${email} has logged in successfully`);
       }
     }, 2000);
   };
 
-  const isLoginAllowed = () => {
-    return !!(email && password);
-  };
+  const isLoginAllowed = useMemo(() => !!(email && password), [email, password]);
+
 
   return (
     <div className="col-xl-4 col-md-10 col-sm-10">
@@ -74,7 +73,7 @@ const LoginScreen: React.FC = () => {
       <div className="d-flex justify-content-center m-2">
         <button
           type="button"
-          disabled={!isLoginAllowed()}
+          disabled={!isLoginAllowed || isLoading}
           onClick={handleLogin}
           className="btn btn-dark w-75"
         >

@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 
 import PasswordInput from "../common/PasswordInput";
@@ -9,17 +10,17 @@ describe("PasswordInput Component", () => {
         expect(screen.getByTestId("pswd-input-testid")).toBeInTheDocument();
     });
 
-    it("calls handlePasswordChange when input changes", () => {
+    it("calls handlePasswordChange when input changes", async () => {
         const mockHandlePasswordChange = vi.fn();
         render(<PasswordInput handlePasswordChange={mockHandlePasswordChange} />);
 
         const passwordInput = screen.getByTestId("pswd-input-testid");
-        fireEvent.change(passwordInput, { target: { value: "p@sswprd" } });
+        await userEvent.type(passwordInput, "p@ssword");
 
-        expect(mockHandlePasswordChange).toHaveBeenCalledWith("p@sswprd");
+        expect(mockHandlePasswordChange).toHaveBeenCalledWith("p@ssword");
     });
 
-    it("toggles password visibility when eye icon is clicked", () => {
+    it("toggles password visibility when eye icon is clicked", async () => {
         render(<PasswordInput handlePasswordChange={() => {}} />);
 
         const passwordInput = screen.getByTestId("pswd-input-testid");
@@ -27,10 +28,10 @@ describe("PasswordInput Component", () => {
 
         expect(passwordInput).toHaveAttribute("type", "password");
 
-        fireEvent.click(toggleIcon);
+        await userEvent.click(toggleIcon);
         expect(passwordInput).toHaveAttribute("type", "text");
 
-        fireEvent.click(toggleIcon);
+        await userEvent.click(toggleIcon);
         expect(passwordInput).toHaveAttribute("type", "password");
     });
 
